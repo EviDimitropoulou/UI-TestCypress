@@ -1,10 +1,12 @@
 
 /// <reference types="cypress" />
 import SearchLocator from '../../page-objects/SearchLocator';
-import SubscriptionLocators  from '../../page-objects/SubscriptionLocators'; ;
+import SubscriptionLocators  from '../../page-objects/SubscriptionLocators'; 
+import PersonalDetailsLocators  from '../../page-objects/PersonalDetailsLocators'; 
 
 const search = new SearchLocator();
 const subscription= new SubscriptionLocators();
+const details= new PersonalDetailsLocators();
 
 describe('Go to Swapfiets site ', () => {
     beforeEach(() => {
@@ -80,6 +82,8 @@ describe('Go to Swapfiets site ', () => {
 
     it('Fill in Personal Details',()=>{
 
+        //type firstName
+        details.TypeFirstName("Evi");
 
     })
 

@@ -59,7 +59,7 @@ class SubscriptionLocators  {
 
       clickOnOrderBikeBtn(){
         this.elements.getOrderBikeBtn().click({force:true});
-        cy.visit('https://account.swapfiets.com/registration/enroll?_ga=2.268293006.1896076.1667651732-946065535.1665928778');
+      
       }
 
      

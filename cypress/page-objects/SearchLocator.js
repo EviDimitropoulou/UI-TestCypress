@@ -63,6 +63,7 @@ class SearchLocator {
     }
 
     checkMoreDetailsLink(name){
+        cy.wait(5000)
         this.elements.getMoreDetailsLink()
         .should('be.visible')
         .should('contain',name).click({multiple:true});
