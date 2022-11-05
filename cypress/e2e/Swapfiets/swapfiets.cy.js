@@ -1,0 +1,87 @@
+
+/// <reference types="cypress" />
+import SearchLocator from '../../page-objects/SearchLocator';
+import SubscriptionLocators  from '../../page-objects/SubscriptionLocators'; ;
+
+const search = new SearchLocator();
+const subscription= new SubscriptionLocators();
+
+describe('Go to Swapfiets site ', () => {
+    beforeEach(() => {
+        cy.viewport(1279, 800)
+      })
+
+    it('visit Swapfiets and Search for bikes in London',()=>{
+       search.visitSwapfietsUKpage();
+       cy.url().should('eq','https://swapfiets.co.uk/')
+
+      search.checkChooseCitytxtBox();
+      search.typeChooseCitytxtBox();
+      search.checkSeeBikesbtn("See bikes"); //assert see bikes button exists and thatit contains See bikes text
+      search.clickSeeBikesBtn(); //user click on See bikes button
+    })
+
+    it('Bikes in London',()=>{
+        //assert that user is navigated to the correct url
+        cy.url().should('eq','https://swapfiets.co.uk/london')
+
+        //assert that change button exists and is clickable
+        search.checkchangeBtn();
+
+        //assert that pop is displayed and close it
+        search.checkPopUp();
+
+        //assert that show product buttons exists 
+          search.checkAllRadioBtn();
+          search.checkEbikeRadioBtn();
+          search.checkCitybikeRadioBtn();
+          //assert that 'more details' link exists and are clickable
+          search.checkMoreDetailsLink('More details');
+          //    search.clickMoreDetailsLink();
+           //cy.go(-1);
+         cy.visit('https://swapfiets.co.uk/london');
+
+        // search.checkNumOfProducts();
+        cy.get('[data-test-id=city-product-list-item]').should('have.length', 4);
+        cy.contains('[data-test-id=city-product-list-item]', 'Original');
+        cy.contains('[data-test-id=city-product-list-item]', 'Deluxe 7');
+        cy.contains('[data-test-id=city-product-list-item]', 'Power 1');
+        cy.contains('[data-test-id=city-product-list-item]', 'Power 7');
+
+
+        //assert that Sidemenu is functional
+        search.checkSideMenuBtn();
+        //close side menu
+        search.checkSideMenuCloses();
+
+    })
+    it('Subscribe to a Power 1',()=>{
+        //subscribe to Power 1
+        subscription.clickOnSubscriptionBtn();
+        //assert that Loyal membership is preselected 
+        subscription.checkLoyalMembershipBtn();
+
+       //assert that flex  membership is not selected
+        subscription.checkFlexMembershipBtn();
+
+        //assert that when Loyal Membership and Yes bike usage is selected On Of is zero Monthly costs £109.90
+         subscription.checkMontlyFieldHasValue("£109.90");   
+
+        //assert that when Flex Membership and Yes bike usage is selected On Of has value
+         subscription.checkOnOffHasValue("£39.90");
+
+        
+    })
+
+    it('Proceed with the Order',()=>{
+        subscription.clickOnOrderBikeBtn();
+    })
+
+
+    it('Fill in Personal Details',()=>{
+
+
+    })
+
+
+})
