@@ -34,7 +34,7 @@ module.exports = defineConfig({
       charts:false,
       html: true,
 
-       reportDir: "cypress/SwapReport",
+       reportDir: "cypress/SwapReporters",
        reportFileNmae: 'report',
        overwrite: true,
        embeddedScreenshots: true,

@@ -101,7 +101,7 @@ describe('Go to Swapfiets site ', () => {
         details.selectYear();
         details.CheckGender();
         details.enterHeight("160");
-        details.OnHoverMsg();
+       // details.OnHoverMsg();
         details.enterStreet("Filaretou");
         details.enterHouseNumber("17");
         details.enterAddition("addition");
