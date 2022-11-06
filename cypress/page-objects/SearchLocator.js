@@ -14,6 +14,10 @@ class SearchLocator {
         getProductList:()=>cy.get('[data-test-id="city-product-list"]'),
         getProductItem:()=>cy.get('[data-test-id="city-product-list-item"]'),
         getCloseSideMenu:()=>cy.get('[data-test-id="sidemenu-close"]'),
+        getCountry:()=>cy.get('[data-test-id="countryButton"]'),
+        getLanguage:()=>cy.get('[data-test-id="languageButton"]'),
+
+    
     }
 
     visitSwapfietsUKpage(){
@@ -66,7 +70,9 @@ class SearchLocator {
         cy.wait(5000)
         this.elements.getMoreDetailsLink()
         .should('be.visible')
-        .should('contain',name).click({multiple:true});
+        .should('contain',name)
+        //.click({multiple:true})
+        ;
     }
     clickMoreDetailsLink(){
       cy.get('[data-test-id="product-more-details-link"]').click()
@@ -80,6 +86,14 @@ class SearchLocator {
    checkSideMenuCloses(){
     this.elements.getCloseSideMenu()
      .click({force:true});
+   }
+   checkCountyValue(){
+    this.elements.getCountry()
+    .should('contain',"United Kingdom");
+   }
+   checkLanguageValue(){
+    this.elements.getLanguage()
+    .should('contain',"English");
    }
    
 } 

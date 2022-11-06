@@ -59,7 +59,7 @@ class SubscriptionLocators  {
 
       clickOnOrderBikeBtn(){
         this.elements.getOrderBikeBtn().click({force:true});
-      
+    
       }
 
      

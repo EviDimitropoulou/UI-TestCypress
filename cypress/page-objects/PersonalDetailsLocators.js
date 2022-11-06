@@ -155,9 +155,14 @@ class PersonalDetailsLocators  {
        // cy.wait(5000)
   //      this.elements.getTooltipWindow().should('exist')
   //  }
-  clickOnBackButton(){
-    this.elements.getBackButton().click({force:true});
-    cy.visit
+        clickOnBackButton(){
+            cy.wait(5000)
+        //  cy.go(-1);
+        this.elements.getBackButton().click({force:true});
+        cy.visit('https://swapfiets.com/en-GB') // i do not like this approach
+            
+
+
   }
 
 }

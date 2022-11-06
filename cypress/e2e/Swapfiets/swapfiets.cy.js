@@ -11,12 +11,17 @@ const details= new PersonalDetailsLocators();
 describe('Go to Swapfiets site ', () => {
     beforeEach(() => {
         cy.viewport(1279, 800)
+      //  cy.intercept('https://swapfiets.com/en-GB',{
+       // statusCode:200,
+      //  }).as('InitialPage')
       })
 
     it('visit Swapfiets and Search for bikes in London',()=>{
        search.visitSwapfietsUKpage();
+        
        cy.url().should('eq','https://swapfiets.co.uk/')
 
+      cy.wait(1000)
       search.checkChooseCitytxtBox();
       search.typeChooseCitytxtBox();
       search.checkSeeBikesbtn("See bikes"); //assert see bikes button exists and thatit contains See bikes text
@@ -37,19 +42,23 @@ describe('Go to Swapfiets site ', () => {
           search.checkAllRadioBtn();
           search.checkEbikeRadioBtn();
           search.checkCitybikeRadioBtn();
+         
           //assert that 'more details' link exists and are clickable
           search.checkMoreDetailsLink('More details');
+          cy.wait(500);
+         
           //    search.clickMoreDetailsLink();
            //cy.go(-1);
-         cy.visit('https://swapfiets.co.uk/london');
 
         // search.checkNumOfProducts();
         cy.get('[data-test-id=city-product-list-item]').should('have.length', 4);
+       
         cy.contains('[data-test-id=city-product-list-item]', 'Original');
         cy.contains('[data-test-id=city-product-list-item]', 'Deluxe 7');
         cy.contains('[data-test-id=city-product-list-item]', 'Power 1');
         cy.contains('[data-test-id=city-product-list-item]', 'Power 7');
-
+        
+        cy.wait(200);
 
         //assert that Sidemenu is functional
         search.checkSideMenuBtn();
@@ -58,6 +67,7 @@ describe('Go to Swapfiets site ', () => {
 
     })
     it('Subscribe to a Power 1',()=>{
+
         //subscribe to Power 1
         subscription.clickOnSubscriptionBtn();
         //assert that Loyal membership is preselected 
@@ -125,10 +135,17 @@ describe('Go to Swapfiets site ', () => {
         details.enterInvalidName();
         details.checkInvalidErrorMessage("This field is incorrect");
         details.clickOnNextButton();
+      
+
       })
 
       it('Go Back',()=>{
         details.clickOnBackButton();
+        
+        //assert that user's UK remains UK
+        search.checkCountyValue();
+        //assert that user's UK remains UK
+        search.checkLanguageValue();
         
       })
        
