@@ -91,7 +91,7 @@ describe('Go to Swapfiets site ', () => {
         details.selectYear();
         details.CheckGender();
         details.enterHeight("160");
-       // details.OnHoverMsg();
+     //   details.OnHoverMsg();
         details.enterStreet("Filaretou");
         details.enterHouseNumber("17");
         details.enterAddition("addition");
@@ -105,20 +105,34 @@ describe('Go to Swapfiets site ', () => {
         details.selectTelephoneCode();
         details.enterPhone("6984278733");
         details.enterComments("Lorem ipsum dolor sit amet, consectetur adipiscing elit");
-       
-        //assert on Hover Window is displayed
-        
-
         details.clickOnTermsAndConditions();
         details.clickOnGDPR();
+        //assert on Hover Window is displayed
+       //   details.OnHoverMsg();
+      })
 
-          details.clearNameField();
+        
+        it('Check required fields',()=>{
+        //check tha if First Name is not inserted the corresponding message is displayed
+        details.clearNameField();
         details.clickOnNextButton();
-
-        
         details.checkRequiredErrorMessage("This field is required");
+      })
         
-    })
+      it('Check validity of entered value',()=>{
+        //check tha if Last Name has not the correct format the corresponding message is displayed
+        details.clearLastNameField();
+        details.enterInvalidName();
+        details.checkInvalidErrorMessage("This field is incorrect");
+        details.clickOnNextButton();
+      })
+
+      it('Go Back',()=>{
+        details.clickOnBackButton();
+        
+      })
+       
+   
 
 
 })

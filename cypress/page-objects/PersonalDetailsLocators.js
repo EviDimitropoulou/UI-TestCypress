@@ -25,13 +25,13 @@ class PersonalDetailsLocators  {
         getTelephoneFields:()=>cy.get('input[name="telephoneNumber1"]'),
         getCommentsFields:()=>cy.get('input[name="deliveryRemarks"]'),
         getTooltip:()=>cy.get('[class="tooltip-button"]'),
-        getTooltipWindow:()=>cy.get('[class="tooltip-window"]'),
+        getTooltipWindow:()=>cy.get('[class="tooltip-window opened"]'),
         getTermsCheckBox:()=>cy.get('input[name="terms"]'),
         getGDPRCheckBox:()=>cy.get('input[name="gdprOptIn"]'),
         getNextButton:()=>cy.get('[data-met="Signup - Personal details - CTA"]'),
         getRequiredErrorMessage:()=>cy.get('[class="missing-message ng-star-inserted"]'),
-        getErrorMessage:()=>cy.get('[class="Sng-touched ng-dirty ng-valid"]'),
-        
+        getErrorMessage:()=>cy.get('[class="error-message ng-star-inserted"]'),
+        getBackButton:()=>cy.get('[class="back-button"]'),
         
     }
 
@@ -40,10 +40,10 @@ class PersonalDetailsLocators  {
         this.elements.getFirstNameTxtFiels().type(firstName);
     }
         TypePrefix(prefix){
-        this.elements.getFirstNameTxtFiels().type(prefix);
+        this.elements.getPrefixTxtFields().type(prefix);
     }
     TypeLastName(lastName){
-        this.elements.getFirstNameTxtFiels().type(lastName);
+        this.elements.getLastNameTxtFiels().type(lastName);
     }
     CheckGender(){
         this.elements.getGenderFemaleFields().check({force:true});
@@ -51,12 +51,7 @@ class PersonalDetailsLocators  {
     enterHeight(height){
         this.elements.getHeighTxtFields().type(height);
     }
-    //OnHoverMsg()
-   // {
-     //   this.elements.getTooltip()
-    // .trigger('mouseover');
-   //    this.elements.getTooltipWindow().should('be.visible')
-   // }
+   
     enterStreet(street){
         this.elements.getStreerTxtFields().type(street);
     }
@@ -124,7 +119,7 @@ class PersonalDetailsLocators  {
         this.elements.getFirstNameTxtFiels().clear();
     }
     clickOnNextButton(){
-        this.elements.getNextButton().click();
+        this.elements.getNextButton().click({force:true});
     }
 
     checkErrorMessage(text){
@@ -135,8 +130,34 @@ class PersonalDetailsLocators  {
     checkRequiredErrorMessage(text){
         cy.wait(1000);
         this.elements.getRequiredErrorMessage()
-        .should('contain',text);
+        .should('contain',text)
+        .should('have.css','color','rgb(254, 161, 6)');
         
     }
+    clearLastNameField(){
+        this.elements.getLastNameTxtFiels().clear();
+    }
+    enterInvalidName(){
+        this.elements.getLastNameTxtFiels()
+        .type("asf3")
+    }
+    checkInvalidErrorMessage(text){
+        this.elements.getErrorMessage()
+        .should('contain',text)
+        .should('have.css','color','rgb(239, 85, 100)');
+    }
+
+   // OnHoverMsg()
+  //  {
+  //      this.elements.getTooltip()
+       // .trigger('mouseover');
+   //    .invoke('show').click();
+       // cy.wait(5000)
+  //      this.elements.getTooltipWindow().should('exist')
+  //  }
+  clickOnBackButton(){
+    this.elements.getBackButton().click({force:true});
+  }
+
 }
 export default PersonalDetailsLocators
