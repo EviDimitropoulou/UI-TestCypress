@@ -121,6 +121,7 @@ describe('Go to Swapfiets site ', () => {
        //   details.OnHoverMsg();
       })
 
+      
         
         it('Check required fields',()=>{
         //check tha if First Name is not inserted the corresponding message is displayed

@@ -24,7 +24,7 @@ After cloning the project from github (<b>git clone https://github.com/EviDimitr
 
 2. Run "npm install".
 
-3. Run "npm init".
+3. 
 
 4. Run "npm install cypress --save-dev".
 
