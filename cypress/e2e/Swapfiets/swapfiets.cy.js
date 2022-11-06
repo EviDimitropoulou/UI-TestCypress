@@ -84,7 +84,40 @@ describe('Go to Swapfiets site ', () => {
 
         //type firstName
         details.TypeFirstName("Evi");
+        details.TypePrefix("fi");
+        details.TypeLastName("Dom");
+        details.selectDay();
+        details.selectMonth();
+        details.selectYear();
+        details.CheckGender();
+        details.enterHeight("160");
+       // details.OnHoverMsg();
+        details.enterStreet("Filaretou");
+        details.enterHouseNumber("17");
+        details.enterAddition("addition");
+        details.enterPostalCode("BD1 2RD");
+        details.enterCityField("London");
 
+          //assert that Country fiels is not editable
+          details.checkCountryBtn();
+
+        details.enterEmailAddress("evi.dimitropoulou@gmail.com");
+        details.selectTelephoneCode();
+        details.enterPhone("6984278733");
+        details.enterComments("Lorem ipsum dolor sit amet, consectetur adipiscing elit");
+       
+        //assert on Hover Window is displayed
+        
+
+        details.clickOnTermsAndConditions();
+        details.clickOnGDPR();
+
+          details.clearNameField();
+        details.clickOnNextButton();
+
+        
+        details.checkRequiredErrorMessage("This field is required");
+        
     })
 
 
