@@ -157,6 +157,7 @@ class PersonalDetailsLocators  {
   //  }
   clickOnBackButton(){
     this.elements.getBackButton().click({force:true});
+    cy.visit
   }
 
 }
