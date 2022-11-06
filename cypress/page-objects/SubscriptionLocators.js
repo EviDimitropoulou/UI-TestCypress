@@ -3,10 +3,12 @@
 class SubscriptionLocators  {
 
     elements={
-        getSubscriptionBtn:()=>cy.get('[href="https://swapfiets.co.uk/london/power-1/configure"]'),
+     
+          getSubscriptionBtn:()=>cy.get('a[href*="power-1/configure"]'),
+    
       //  getLoyalMembershipBtn:()=> cy.get('[data-test-id="radio-button"] input'),
         getLoyalMembershipBtn:()=> cy.get('span [value="loyal"]'),
-    //    getFlexMembershipBtn:()=> cy.get('[data-test-id="radio-button"] input'),
+      //    getFlexMembershipBtn:()=> cy.get('[data-test-id="radio-button"] input'),
         getFlexMembershipBtn:()=> cy.get('span [value="flexible"]'),
         getYesBikeUsageBtn:()=> cy.get('span [value="yes"]'),
         getNoBikeUsageBtn:()=> cy.get('span [value="no"]'),
@@ -17,7 +19,9 @@ class SubscriptionLocators  {
     }
 
     clickOnSubscriptionBtn(){
-        this.elements.getSubscriptionBtn().click({force:true});
+        this.elements.getSubscriptionBtn()
+       .should('exist')
+       .click({force:true});
     }
 
     checkLoyalMembershipBtn(){

@@ -144,23 +144,24 @@ class PersonalDetailsLocators  {
     checkInvalidErrorMessage(text){
         this.elements.getErrorMessage()
         .should('contain',text)
-        .should('have.css','color','rgb(239, 85, 100)');
+        .should('have.css','color','rgb(239, 85, 100)')
     }
 
-   // OnHoverMsg()
-  //  {
-  //      this.elements.getTooltip()
-       // .trigger('mouseover');
-   //    .invoke('show').click();
-       // cy.wait(5000)
-  //      this.elements.getTooltipWindow().should('exist')
-  //  }
+//     OnHoverMsg()
+//    {
+//         this.elements.getTooltip()
+//          .trigger('mouseover')
+//          .invoke('show')
+//         // cy.pause();
+//        // cy.wait(5000)
+//            this.elements.getTooltipWindow().should('exist')
+//     }
         clickOnBackButton(){
             cy.wait(5000)
         //  cy.go(-1);
         this.elements.getBackButton().click({force:true});
         cy.visit('https://swapfiets.com/en-GB') // i do not like this approach
-            
+
 
 
   }
