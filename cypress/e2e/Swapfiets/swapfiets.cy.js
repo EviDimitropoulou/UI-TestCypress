@@ -33,10 +33,10 @@ describe('Go to Swapfiets site ', () => {
         cy.url().should('eq','https://swapfiets.co.uk/london')
 
         //assert that change button exists and is clickable
-        search.checkchangeBtn();
+   //     search.checkchangeBtn();
 
         //assert that pop is displayed and close it
-        search.checkPopUp();
+     //   search.checkPopUp(); - there is no pop up anymore
 
         //assert that show product buttons exists 
           search.checkAllRadioBtn();

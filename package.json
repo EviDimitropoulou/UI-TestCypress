@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cypress open",
     "cypress:open": "cypress open",
-    "cy:run": "cypress run"
+    "headless": "cypress run"
   },
   "repository": {
     "type": "git",
